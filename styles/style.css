@@ -11,6 +11,10 @@ html {
     font-family: 'Roboto' ,sans-serif;
 }
 
+img {
+    width: 100%;
+}
+
 .row {
     display: flex;
     flex-direction: row;
@@ -75,6 +79,7 @@ html {
 .main {
     background-color: rgb(241, 255, 251);
     padding: 20px 0;
+    height: 100vh;
 }
 
 .btn {
@@ -93,6 +98,11 @@ html {
     padding: .5em;
     border-radius: 5px;
     padding: 10px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn:focus {
+    opacity: 80%;
 }
 
 .add-book:focus,
@@ -121,12 +131,25 @@ html {
 
 .popup {
     background-color: rgb(255, 255, 255);
-    width: 75%;
+    width: 85%;
     max-width: 450px;
     margin: 0 auto;
     border-radius: 5px;
     border: 1px solid black;
     padding: 1em;
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+
+.toggle-popup {
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .popup__title {
@@ -135,6 +158,8 @@ html {
     font-size: 2em;
     padding: .5em 0;
 }
+
+/* FORM ----------------------------------------- */
 
 .form-item {
     display: flex;
@@ -160,11 +185,29 @@ html {
     text-align: center;
 }
 
-.form-button {
+/* LIBRARY ---------------------------------------------- */
 
+.library-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
-@media (min-width: 700px) {
+/* CARD ------------------------------------------------ */
+
+.card {
+    width: 200px;
+    background-color: cornsilk;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+.book-title {
+    text-align: center;
+    font-size: 1.25em;
+}
+
+@media (min-width: 800px) {
     .logo {
         font-size: 4em;
         display: block;
@@ -186,7 +229,7 @@ html {
     }
 
     .header__link +.header__link {
-        margin-left: 10px;
+        margin-left: 25px;
         margin-top: 0;
     }
 
