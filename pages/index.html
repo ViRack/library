@@ -11,19 +11,38 @@
 <body>
     <header class="header">
         <div class="container column">
-                <div class="logo">This.Library</div>
-                <ul class="links-list">
-                    <div class="column">
-                        <li class="header__link">Log In</li>
-                        <li class="header__link sign-up-link">Sign up</li>    
-                    </div>
+                <h1 class="logo">This.Library</h1>
+                <ul class="links-list column">
+                    <li class="header__link">Log In</li>
+                    <li class="header__link sign-up-link">Sign up</li>    
                 </ul>
         </div>
     </header>
 
     <main class="main">
         <div class="container">
-            <div class="main__grid">
+            <button class="btn">add book</button>
+            <div class="popup">
+                <h2 class="popup__title">book information</h2>
+                <ul class="form-container">
+                    <li class="form-item">
+                        <label for="title" class="label">Title</label>
+                        <input type="text" class="input" id="title">
+                    </li>
+                    <li class="form-item">
+                        <label for="author" class="label">Author</label>
+                        <input type="text" class="input" id="author">
+                    </li>
+                    <li class="form-item">
+                        <label for="pages" class="label">Pages</label>
+                        <input type="number" class="input">
+                    </li>
+                    <li class="form-item">
+                        <button type="submit" class="btn">add book</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="library-display">
 
             </div>
         </div>
@@ -31,7 +50,7 @@
 
     <footer class="footer">
         <div class="container">
-            <a class="footer__link" href="Github.com/virack">
+            <a class="footer__link" href="https://github.com/ViRack">
                 GitHub.com/ViRack
             <a>
         </div>

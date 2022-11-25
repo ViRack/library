@@ -22,11 +22,8 @@ html {
 }
 
 .container {
-    display: flex;
     max-width: 1200px;
     margin: 0 auto;
-    border: 1px solid red;
-    justify-content: center;
 }
 
 /* HEADER -------------------------------------------- */
@@ -37,13 +34,11 @@ html {
 }
 
 .header {
-    width: 100%;
     padding: 1em;
 }
 
 .logo {
-    border : 1px solid white;
-    font-size: 2rem;
+    font-size: 2.25rem;
     letter-spacing: 8px;
     text-align: center;
     color: white;
@@ -66,7 +61,7 @@ html {
 
 .sign-up-link {
     font-size: 1.2em;
-    background-color: rgb(48, 255, 86);
+    background-color: rgb(187, 227, 215);
     padding: .35em .75em;
     border-radius: 100px;
     color: rgb(0, 37, 57);
@@ -75,18 +70,98 @@ html {
     align-items: center;
 }
 
+/* MAIN ----------------------------------------------- */
+
+.main {
+    background-color: rgb(241, 255, 251);
+    padding: 20px 0;
+}
+
+.btn {
+    display: flex;
+    margin: 0 auto;
+    background: none;
+    border: none;
+    font: inherit;
+
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: 900;
+    
+    background: rgb(68, 136, 205);
+    color: white;
+    padding: .5em;
+    border-radius: 5px;
+    padding: 10px 30px;
+}
+
+.add-book:focus,
+.add-book:hover {
+    opacity: 70%;
+}
+
+
 /* FOOTER --------------------------------------------- */
 
 .footer {
-    
+    padding: .75asem;
 }
 
 .footer__link {
+    display: flex;
     color: white;
     text-decoration: none;
     font-size: 1.25em;
-    padding: 2em;
     letter-spacing: .25em;
+    margin: 0 auto;
+    width: fit-content
+}
+
+/* POPUP ----------------------------------------------- */
+
+.popup {
+    background-color: rgb(255, 255, 255);
+    width: 75%;
+    max-width: 450px;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+.popup__title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2em;
+    padding: .5em 0;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-item .btn {
+    font-size: .75em;
+}
+
+.label {
+    width: fit-content;
+    font-size: 1.25em;
+    margin-bottom: 10px;
+}
+.input {
+    margin-bottom: 10px;
+    width: 70%;
+    max-width: 300px;
+    text-align: center;
+}
+
+.form-button {
+
 }
 
 @media (min-width: 700px) {
@@ -97,6 +172,27 @@ html {
 
     .column {
         flex-direction: row;
+    }
+
+    .links-list {
+        align-items: center;
+        justify-content: flex-end;
+        height: 100%;
+        width: 100%;
+    }
+
+    .header__link {
+        font-size: 1.5em;
+    }
+
+    .header__link +.header__link {
+        margin-left: 10px;
+        margin-top: 0;
+    }
+
+    .add-book {
+        font-size: 3em;
+        
     }
 
 }
