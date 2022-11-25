@@ -79,7 +79,6 @@ img {
 .main {
     background-color: rgb(241, 255, 251);
     padding: 20px 0;
-    height: 100vh;
 }
 
 .btn {
@@ -148,7 +147,7 @@ img {
 
 .toggle-popup {
     visibility: visible;
-    top: 50%;
+    top: 55%;
     transform: translate(-50%, -50%) scale(1);
 }
 
@@ -157,6 +156,20 @@ img {
     text-transform: uppercase;
     font-size: 2em;
     padding: .5em 0;
+}
+
+.bar:nth-child(1) {
+    background-color: black;
+    width: 25px;
+    height: 1px;
+    transform: rotate(45deg);
+}
+
+.bar:nth-child(2) {
+    background-color: black;
+    width: 25px;
+    height: 1px;
+    transform: rotate(-45deg);
 }
 
 /* FORM ----------------------------------------- */
@@ -178,6 +191,7 @@ img {
     font-size: 1.25em;
     margin-bottom: 10px;
 }
+
 .input {
     margin-bottom: 10px;
     width: 70%;
@@ -189,7 +203,9 @@ img {
 
 .library-display {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(225px, 2fr));
+    padding: 1em;
+    gap: 1em;
 }
 
 /* CARD ------------------------------------------------ */
@@ -200,6 +216,7 @@ img {
     border-radius: 10px;
     border: 1px solid black;
     padding: 1em;
+    margin: 0 auto;
 }
 
 .book-title {
@@ -236,6 +253,10 @@ img {
     .add-book {
         font-size: 3em;
         
+    }
+
+    .toggle-popup {
+        top: 275px;
     }
 
 }
