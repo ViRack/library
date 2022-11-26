@@ -62,30 +62,54 @@ function Book() {
     this.getPublishDate = function() {
         return this.setPublishDate;
     };
+
+    this.isEmpty = function() {
+        return (this.title === "") && (this.author === "") && (this.pages === 0);
+    }
 }
 
-let myLibrary = [];
+function Library() {
+
+    const library = new Map();
+
+    this.size = function() {
+        return this.library.size;
+    }
+
+    this.getBook = function(id) {
+        return this.library.get(id);
+    }
+
+    this.insertBook = function(book) {
+        if (book.isEmpty()) return false;
+
+        let id = this.library.size + 1;
+        library.set(id, book);
+        return true;
+    }
+
+    this.removeBook = function(id) {
+        if (!this.library.has(id)) return false;
+        console.log("Book \"" + id + "\" has been deleted");
+
+        library.delete(id);
+        return true;
+    }
+}
+
+let library = new Library();
 
 let addBookButton = document.querySelector(".add-book");
 addBookButton.addEventListener("click", () => {
-    console.log("add-book clicked!")
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
     let pages = document.getElementById("pages").value;
-
-    console.log(title.textContent);
-
-
-
-    console.log(title);
 
     let book = new Book();
     book.setTitle(title);
     book.setAuthor(author);
     book.setPages(pages)
 
-    myLibrary.push(book);
-    console.log(myLibrary);
-
-
+    library.insertBook(book);
 });
+
