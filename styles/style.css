@@ -38,7 +38,7 @@ img {
 }
 
 .header {
-    padding: 1em;
+    padding: 1.25em;
 }
 
 .logo {
@@ -46,6 +46,7 @@ img {
     letter-spacing: 8px;
     text-align: center;
     color: white;
+    margin: 0 auto;
 }
 
 .links-list {

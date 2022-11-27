@@ -18,6 +18,20 @@ function Book() {
     this.genre = "";
     this.publisher = "";
     this.publishDate = "";
+    this.version = "";
+
+    this.bookCard = this.getCard();
+
+    this.fillCard = function() {
+        
+    }
+
+    this.getCard = function() {
+        if (this.isEmpty()) return false;
+
+        return this.bookCard;
+    }
+
     
     this.setTitle = function(newTitle) {
         this.title = newTitle;
@@ -41,6 +55,13 @@ function Book() {
 
     this.setPublishDate = function(newDate) {
         this.publishDate = newDate;
+    }
+
+    this.setVersion = function(newVersion) {
+        if (isNaN(newVersion)) return false;
+
+        this.version = newVersion;
+        return true;
     }
 
     this.getTitle = function() {
