@@ -78,7 +78,11 @@ function Book() {
     };
 
     this.isEmpty = function() {
-        return (this.title === "") && (this.author === "") && (this.pages === 0);
+        console.log("in isEmpty");
+        if (this.title === "" || this.author === "") return true;
+
+        return false;
+
     }
 }
 
@@ -112,27 +116,11 @@ function Library() {
     }
 }
 
-// <div class="card">
-//     <div class="id">1</div>
-//     <div class="img-container">
-//         <img src="../images/clipart1853715.png" alt="question mark">
-//     </div>
-                    
-//     <div class="book-information">
-//         <div class="book-title">Lorem, ipsum dolor.</div>
-//         <div class="author">Lorem, ipsum.</div>
-//         <div class="pages">Pages 100</div>
-//     </div>
-
-//     <div class="card-btns">
-//         <div class="edit-card card-btn"><img src="../images/circle-edit-outline.svg" alt=""></div>
-//         <div class="more-information card-btn"><img src="../images/information-outline.svg" alt=""></div>
-//     </div>
-// </div>
-
-
 function createCard(cardNumber, newBook) {
-    if (newBook.isEmpty()) return false;
+    if (newBook.isEmpty()) {
+        console.log("book is empty");
+        return false;
+    }
 
     let card = document.createElement("div");
     card.classList.add("card");
@@ -172,7 +160,7 @@ function createCard(cardNumber, newBook) {
 
     let pages = document.createElement("div");
     pages.classList.add("pages");
-    pages.textContent = newBook.getPages();
+    pages.textContent = "Pages: " + newBook.getPages();
 
     bookInformation.append(title);
     bookInformation.append(author);
@@ -211,6 +199,13 @@ function createCard(cardNumber, newBook) {
     return card;
 }
 
+function resetPopup() {
+    document.getElementById("title").value = "";
+    document.getElementById("author").value= "";
+    document.getElementById("pages").value = "";
+
+}
+
 let library = new Library();
 
 let addBookButton = document.querySelector(".add-book");
@@ -227,10 +222,20 @@ addBookButton.addEventListener("click", () => {
     if(library.insertBook(book)) {
         let card = createCard(library.size(), library.getBook(library.size()));
         document.querySelector(".library-display").append(card);
+        popup.classList.remove("toggle-popup");
+        resetPopup();
     }
-
-
-
 });
 
+let editButton = document.querySelector(".edit-card");
+let moreInfoButton = document.querySelector(".more-information");
+
+const moreInfoPopup = document.querySelector(".more-information-popup");
+
+moreInfoButton.addEventListener("click", () => {
+    console.log("moreInfo");
+    moreInfoPopup.classList.toggle(".toggle-popup");
+    //     popup.classList.toggle("toggle-popup")
+
+});
 
