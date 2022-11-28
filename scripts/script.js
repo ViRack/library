@@ -20,18 +20,11 @@ function Book() {
     this.publishDate = "";
     this.version = "";
 
-    this.bookCard = this.getCard();
-
-    this.fillCard = function() {
-        
-    }
-
     this.getCard = function() {
         if (this.isEmpty()) return false;
 
         return this.bookCard;
     }
-
     
     this.setTitle = function(newTitle) {
         this.title = newTitle;
@@ -94,17 +87,18 @@ function Library() {
     const library = new Map();
 
     this.size = function() {
-        return this.library.size;
+        console.log(library.size);
+        return library.size;
     }
 
     this.getBook = function(id) {
-        return this.library.get(id);
+        return library.get(id);
     }
 
     this.insertBook = function(book) {
         if (book.isEmpty()) return false;
 
-        let id = this.library.size + 1;
+        let id = library.size + 1;
         library.set(id, book);
         return true;
     }
@@ -116,6 +110,105 @@ function Library() {
         library.delete(id);
         return true;
     }
+}
+
+// <div class="card">
+//     <div class="id">1</div>
+//     <div class="img-container">
+//         <img src="../images/clipart1853715.png" alt="question mark">
+//     </div>
+                    
+//     <div class="book-information">
+//         <div class="book-title">Lorem, ipsum dolor.</div>
+//         <div class="author">Lorem, ipsum.</div>
+//         <div class="pages">Pages 100</div>
+//     </div>
+
+//     <div class="card-btns">
+//         <div class="edit-card card-btn"><img src="../images/circle-edit-outline.svg" alt=""></div>
+//         <div class="more-information card-btn"><img src="../images/information-outline.svg" alt=""></div>
+//     </div>
+// </div>
+
+
+function createCard(cardNumber, newBook) {
+    if (newBook.isEmpty()) return false;
+
+    let card = document.createElement("div");
+    card.classList.add("card");
+
+    // Id
+
+    let id = document.createElement("div");
+    id.classList.add("id");
+    id.textContent = cardNumber;
+
+    card.append(id);
+
+    // book image
+
+    let imageContainer = document.createElement("div");
+    imageContainer.classList.add("img-container");
+
+    let img = document.createElement("img");
+    img.src = "../images/clipart1853715.png";
+
+    imageContainer.append(img);
+
+    card.append(imageContainer);
+
+    // book information 
+
+    let bookInformation = document.createElement("div");
+    bookInformation.classList.add("book-information");
+
+    let title = document.createElement("div");
+    title.classList.add("book-title");
+    title.textContent = newBook.getTitle();
+
+    let author = document.createElement("div");
+    author.classList.add("author");
+    author.textContent = newBook.getAuthor();
+
+    let pages = document.createElement("div");
+    pages.classList.add("pages");
+    pages.textContent = newBook.getPages();
+
+    bookInformation.append(title);
+    bookInformation.append(author);
+    bookInformation.append(pages);
+
+    card.append(bookInformation);
+
+    // card buttons
+
+    let cardButtons = document.createElement("div");
+    cardButtons.classList.add("card-btns");
+
+    let editButton = document.createElement("div");
+    editButton.classList.add("edit-card");
+    editButton.classList.add("card-btn");
+
+    let editImage = document.createElement("img");
+    editImage.src = "../images/circle-edit-outline.svg"
+
+    editButton.append(editImage);
+
+    let moreButton = document.createElement("div");
+    moreButton.classList.add("more-information");
+    moreButton.classList.add("card-btn");
+
+    let moreImage = document.createElement("img");
+    moreImage.src = "../images/information-outline.svg";
+
+    moreButton.append(moreImage);
+
+    cardButtons.append(editButton);
+    cardButtons.append(moreButton);
+
+    card.append(cardButtons);
+
+    return card;
 }
 
 let library = new Library();
@@ -131,6 +224,13 @@ addBookButton.addEventListener("click", () => {
     book.setAuthor(author);
     book.setPages(pages)
 
-    library.insertBook(book);
+    if(library.insertBook(book)) {
+        let card = createCard(library.size(), library.getBook(library.size()));
+        document.querySelector(".library-display").append(card);
+    }
+
+
+
 });
+
 
