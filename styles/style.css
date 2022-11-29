@@ -224,6 +224,10 @@ img {
     flex-direction: column;
 }
 
+.id {
+    display: none;
+}
+
 .img-container {
     width: 166px;
     height: 166px;
@@ -270,6 +274,7 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 10px;
 }
 
 .card-btn {

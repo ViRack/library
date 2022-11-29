@@ -182,6 +182,16 @@ function createCard(cardNumber, newBook) {
 
     editButton.append(editImage);
 
+    let trashButton = document.createElement("div");
+    trashButton.classList.add("trash-card");
+    trashButton.classList.add("card-btn");
+
+    let trashImage = document.createElement("img");
+    trashImage.src = "../images/trash-can-outline.svg";
+    
+    trashButton.append(trashImage);
+
+
     let moreButton = document.createElement("div");
     moreButton.classList.add("more-information");
     moreButton.classList.add("card-btn");
@@ -192,6 +202,7 @@ function createCard(cardNumber, newBook) {
     moreButton.append(moreImage);
 
     cardButtons.append(editButton);
+    cardButtons.append(trashButton);
     cardButtons.append(moreButton);
 
     card.append(cardButtons);
@@ -227,8 +238,8 @@ addBookButton.addEventListener("click", () => {
     }
 });
 
-let editButton = document.querySelector(".edit-card");
-let moreInfoButton = document.querySelector(".more-information");
+const editButton = document.querySelector(".edit-card");
+const moreInfoButton = document.querySelector(".more-information");
 
 const moreInfoPopup = document.querySelector(".more-information-popup");
 
@@ -239,3 +250,9 @@ moreInfoButton.addEventListener("click", () => {
 
 });
 
+const trashButton = document.querySelector(".trash-card");
+trashButton.addEventListener("click", () => {
+    
+    
+
+});
