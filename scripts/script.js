@@ -132,15 +132,12 @@ popupButton.addEventListener("click",  () => {
 
 closePopupButton.addEventListener("click", () => {
     popup.classList.remove("toggle-popup");
-
-
 })
 
-function resetPopup() {
+function resetAddBookPopup() {
     document.getElementById("title").value = "";
     document.getElementById("author").value= "";
     document.getElementById("pages").value = "";
-
 }
 
 // CARD ----------------------------------------------
@@ -225,6 +222,7 @@ function createCard(cardNumber, newBook) {
     let moreButton = document.createElement("div");
     moreButton.classList.add("more-information");
     moreButton.classList.add("card-btn");
+    addMoreInformationFunctionality(moreButton, cardNumber);
 
     let moreImage = document.createElement("img");
     moreImage.src = "../images/information-outline.svg";
@@ -257,40 +255,29 @@ addBookButton.addEventListener("click", () => {
         let card = createCard(library.size(), library.getBook(library.size()));
         document.querySelector(".library-display").append(card);
         popup.classList.remove("toggle-popup");
-        resetPopup();
+        resetAddBookPopup();
     }
 });
 
-const editButton = document.querySelector(".edit-card");
-const moreInfoButton = document.querySelector(".more-information");
 
-const moreInfoPopup = document.querySelector(".more-information-popup");
 
-moreInfoButton.addEventListener("click", () => {
-    console.log("moreInfo");
-    moreInfoPopup.classList.toggle(".toggle-popup");
-    //     popup.classList.toggle("toggle-popup")
-
-});
-
-const trashButton = document.querySelector(".trash-card");
-trashButton.addEventListener("click", () => {
-    
-    let parentElement = trashButton.parentElement;
-    let idString = parentElement.querySelector(".id");
-    let idNumber = Number.parseInt(idString);
-    console.log(idNumber);
-
-});
+function addMoreInformationFunctionality(button, idNum) {
+    button.addEventListener("click", () => {        
+        const popup = document.querySelector(".more-information-popup");
+        popup.classList.add("toggle-popup");
+        
+    });
+}
 
 function addTrashFunctionality(button, idNum) {
     button.addEventListener("click", () => {
         if(library.isIDIn(idNum)) {
-            let card = button.parentElement;
-            let libraryView = card.parentElement;
+            const card = button.parentElement;
+            const libraryView = card.parentElement;
             libraryView.remove(card);
 
             library.removeBook(idNum);
+            console.log(library.isIDIn(idNum));
         }
     });
 }
