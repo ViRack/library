@@ -1,15 +1,4 @@
-let popupButton = document.querySelector(".btn");
-let popup = document.querySelector(".popup");
-let closePopupButton = document.querySelector(".close-btn");
-
-popupButton.addEventListener("click",  () => {
-    popup.classList.toggle("toggle-popup")
-    console.log("clicked");
-});
-
-closePopupButton.addEventListener("click", () => {
-    popup.classList.remove("toggle-popup");
-})
+// OBJECT CONSTRUCTORS AND LIBRARY INITIALIZATION ------------------------
 
 function Book() {
     this.title = "";
@@ -114,7 +103,47 @@ function Library() {
         library.delete(id);
         return true;
     }
+
+    this.isIDIn = function(id) {
+        if (library.size === 0) return false;
+
+        if (library.has(id)) {
+            console.log(id + " is in~");
+            return true;
+        }
+
+        return false;
+    }
+
 }
+
+let library = new Library();
+
+// POPUPS -----------------------------------------
+
+let popupButton = document.querySelector(".btn");
+let popup = document.querySelector(".popup");
+let closePopupButton = document.querySelector(".close-btn");
+
+popupButton.addEventListener("click",  () => {
+    popup.classList.toggle("toggle-popup")
+    console.log("clicked");
+});
+
+closePopupButton.addEventListener("click", () => {
+    popup.classList.remove("toggle-popup");
+
+
+})
+
+function resetPopup() {
+    document.getElementById("title").value = "";
+    document.getElementById("author").value= "";
+    document.getElementById("pages").value = "";
+
+}
+
+// CARD ----------------------------------------------
 
 function createCard(cardNumber, newBook) {
     if (newBook.isEmpty()) {
@@ -185,6 +214,7 @@ function createCard(cardNumber, newBook) {
     let trashButton = document.createElement("div");
     trashButton.classList.add("trash-card");
     trashButton.classList.add("card-btn");
+    addTrashFunctionality(trashButton, cardNumber)
 
     let trashImage = document.createElement("img");
     trashImage.src = "../images/trash-can-outline.svg";
@@ -210,14 +240,7 @@ function createCard(cardNumber, newBook) {
     return card;
 }
 
-function resetPopup() {
-    document.getElementById("title").value = "";
-    document.getElementById("author").value= "";
-    document.getElementById("pages").value = "";
-
-}
-
-let library = new Library();
+// BUTTONS -----------------------------------------
 
 let addBookButton = document.querySelector(".add-book");
 addBookButton.addEventListener("click", () => {
@@ -253,6 +276,21 @@ moreInfoButton.addEventListener("click", () => {
 const trashButton = document.querySelector(".trash-card");
 trashButton.addEventListener("click", () => {
     
-    
+    let parentElement = trashButton.parentElement;
+    let idString = parentElement.querySelector(".id");
+    let idNumber = Number.parseInt(idString);
+    console.log(idNumber);
 
 });
+
+function addTrashFunctionality(button, idNum) {
+    button.addEventListener("click", () => {
+        if(library.isIDIn(idNum)) {
+            let card = button.parentElement;
+            let libraryView = card.parentElement;
+            libraryView.remove(card);
+
+            library.removeBook(idNum);
+        }
+    });
+}
