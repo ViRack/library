@@ -66,6 +66,10 @@ function Book() {
         return this.setPublishDate;
     };
 
+    this.getVersion = function() {
+        return this.version;
+    };
+
     this.isEmpty = function() {
         console.log("in isEmpty");
         if (this.title === "" || this.author === "") return true;
@@ -260,12 +264,53 @@ addBookButton.addEventListener("click", () => {
 });
 
 
+{/* <div class="container">
+<div class="more-information-popup">
+    <div class="info__book-title">Title: </div>
+    <div class="info__book-author">Author: </div>
+    <div class="info__book-pages">Pages: </div>
+    <div class="info__book-genre">Genre: </div>
+    <div class="info__book-publisher">Publisher: </div>
+    <div class="info__book-publish-date">Publish Date: </div>
+    <div class="info__book-version">Version: </div>
+</div>
+</div> */}
+
 
 function addMoreInformationFunctionality(button, idNum) {
     button.addEventListener("click", () => {        
-        const popup = document.querySelector(".more-information-popup");
+        const libraryDisplay = document.querySelector(".library-display");
+        const container = libraryDisplay.parentElement;
+        const popup = container.querySelector(".more-information-popup"); 
+
         popup.classList.add("toggle-popup");
-        
+
+        const closeBtn = popup.querySelector(".close-btn");
+        closeBtn.addEventListener("click", () => {
+            popup.classList.remove("toggle-popup");
+        });
+
+
+        if (library.isIDIn(idNum)) {
+            const title = popup.querySelector(".info__book-title");
+            const author = popup.querySelector(".info__book-author");
+            const pages = popup.querySelector(".info__book-pages");
+            const genre = popup.querySelector(".info__book-genre");
+            const publisher = popup.querySelector(".info__book-publisher");
+            const publishDate = popup.querySelector(".info__publish-date");
+            const version = popup.querySelector(".info__book-version");
+
+            const book = library.getBook(idNum);
+
+            title.textContent = title.textContent + " " + book.getTitle();
+            author.textContent = author.textContent + " " + book.getAuthor();
+            pages.textContent = pages.textContent + " " + book.getPages();
+            genre.textContent = genre.textContent + " " + book.getPages();
+            publisher.textContent = publisher.textContent + " " + book.getPublisher();
+            publishDate.textContent = publishDate.textContent + " " + book.getPublishDate();
+            version.textContent = version.textContent + " " + book.getVersion();
+        }
+
     });
 }
 

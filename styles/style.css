@@ -178,18 +178,23 @@ img {
     padding: .5em 0;
 }
 
-.bar:nth-child(1) {
-    background-color: black;
-    width: 25px;
-    height: 1px;
-    transform: rotate(45deg);
+.bar {
+    width: 22px;
+    height: 10px
 }
 
 .bar:nth-child(2) {
     background-color: black;
-    width: 25px;
-    height: 1px;
+    transform: rotate(45deg);
+}
+
+.bar:nth-child(1) {
+    background-color: black;
     transform: rotate(-45deg);
+}
+
+.more-information-popup  .close-btn {
+    margin-bottom: 10px;
 }
 
 /* FORM ----------------------------------------- */
@@ -233,7 +238,7 @@ img {
 .card {
     text-align: center;
     width: 200px;
-    background-color: cornsilk;
+    background-color: rgb(238, 254, 255);
     border-radius: 10px;
     border: 1px solid black;
     padding: 1em;
