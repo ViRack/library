@@ -144,6 +144,16 @@ function resetAddBookPopup() {
     document.getElementById("pages").value = "";
 }
 
+function resetMoreInformationPopup(popup) {
+    popup.querySelector(".info__book-title").value = "Title: ";
+    popup.querySelector(".info__book-author").value = "Author: ";
+    popup.querySelector(".info__book-pages").value = "Pages: ";
+    popup.querySelector(".info__book-genre").value = "Genre: ";
+    popup.querySelector(".info__book-publisher").value = "Publisher: ";
+    popup.querySelector(".info__book-publish-date").value = "Publish Date: ";
+    popup.querySelector(".info__book-version").value = "Version: ";
+}
+
 // CARD ----------------------------------------------
 
 function createCard(cardNumber, newBook) {
@@ -264,19 +274,6 @@ addBookButton.addEventListener("click", () => {
 });
 
 
-{/* <div class="container">
-<div class="more-information-popup">
-    <div class="info__book-title">Title: </div>
-    <div class="info__book-author">Author: </div>
-    <div class="info__book-pages">Pages: </div>
-    <div class="info__book-genre">Genre: </div>
-    <div class="info__book-publisher">Publisher: </div>
-    <div class="info__book-publish-date">Publish Date: </div>
-    <div class="info__book-version">Version: </div>
-</div>
-</div> */}
-
-
 function addMoreInformationFunctionality(button, idNum) {
     button.addEventListener("click", () => {        
         const libraryDisplay = document.querySelector(".library-display");
@@ -288,6 +285,7 @@ function addMoreInformationFunctionality(button, idNum) {
         const closeBtn = popup.querySelector(".close-btn");
         closeBtn.addEventListener("click", () => {
             popup.classList.remove("toggle-popup");
+            resetMoreInformationPopup(popup);
         });
 
 
