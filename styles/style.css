@@ -149,26 +149,32 @@ img {
 
 .more-information-popup {
     background-color: white;
-    width:fit-content;
+    width: 90%;
+    max-height: 400px;
     padding: 1.25em;
-    font-size: 1.75em;
+    font-size: 1.3em;
     text-align: left;
     line-height: 1.5;
     border-radius: 10px;
     border: 1px solid black;
+    margin: 0 auto;
+    overflow: scroll;
+
     
     position: absolute;
     top: 0;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.1);
     visibility: hidden;
-    transition: transform 0.4s, top 0.4s;
+    transition:  0.4s, top 0.4s;
 }
 
 .toggle-popup {
     visibility: visible;
-    top: 55%;
-    transform: translate(-50%, -50%) scale(1);
+    position:fixed; 
+    top: calc(50% - 25px); 
+    left: calc(50% - 50px); 
+    transform: translate(-50%, -50%) scale(.75);
 }
 
 .popup__title {

@@ -58,12 +58,16 @@ function Book() {
         return this.pages;
     };
 
+    this.getGenre = function() {
+        return this.genre;
+    }
+
     this.getPublisher = function() {
         return this.publisher;
     };
 
     this.getPublishDate = function() {
-        return this.setPublishDate;
+        return this.publishDate;
     };
 
     this.getVersion = function() {
@@ -145,13 +149,13 @@ function resetAddBookPopup() {
 }
 
 function resetMoreInformationPopup(popup) {
-    popup.querySelector(".info__book-title").value = "Title: ";
-    popup.querySelector(".info__book-author").value = "Author: ";
-    popup.querySelector(".info__book-pages").value = "Pages: ";
-    popup.querySelector(".info__book-genre").value = "Genre: ";
-    popup.querySelector(".info__book-publisher").value = "Publisher: ";
-    popup.querySelector(".info__book-publish-date").value = "Publish Date: ";
-    popup.querySelector(".info__book-version").value = "Version: ";
+    popup.querySelector(".info__book-title").textContent = "Title: ";
+    popup.querySelector(".info__book-author").textContent = "Author: ";
+    popup.querySelector(".info__book-pages").textContent = "Pages: ";
+    popup.querySelector(".info__book-genre").textContent = "Genre: ";
+    popup.querySelector(".info__book-publisher").textContent = "Publisher: ";
+    popup.querySelector(".info__book-publish-date").textContent = "Publish Date: ";
+    popup.querySelector(".info__book-version").textContent = "Version: ";
 }
 
 // CARD ----------------------------------------------
@@ -295,18 +299,18 @@ function addMoreInformationFunctionality(button, idNum) {
             const pages = popup.querySelector(".info__book-pages");
             const genre = popup.querySelector(".info__book-genre");
             const publisher = popup.querySelector(".info__book-publisher");
-            const publishDate = popup.querySelector(".info__publish-date");
+            const publishDate = popup.querySelector(".info__book-publish-date");
             const version = popup.querySelector(".info__book-version");
 
             const book = library.getBook(idNum);
 
-            title.textContent = title.textContent + " " + book.getTitle();
-            author.textContent = author.textContent + " " + book.getAuthor();
-            pages.textContent = pages.textContent + " " + book.getPages();
-            genre.textContent = genre.textContent + " " + book.getPages();
-            publisher.textContent = publisher.textContent + " " + book.getPublisher();
-            publishDate.textContent = publishDate.textContent + " " + book.getPublishDate();
-            version.textContent = version.textContent + " " + book.getVersion();
+            title.textContent       = title.textContent         + " " + book.getTitle();
+            author.textContent      = author.textContent        + " " + book.getAuthor();
+            pages.textContent       = pages.textContent         + " " + book.getPages();
+            genre.textContent       = genre.textContent         + " " + book.getGenre();
+            publisher.textContent   = publisher.textContent     + " " + book.getPublisher();
+            publishDate.textContent = publishDate.textContent   + " " + book.getPublishDate();
+            version.textContent     = version.textContent       + " " + book.getVersion();
         }
 
     });
